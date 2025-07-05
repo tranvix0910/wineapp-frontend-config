@@ -1,0 +1,41 @@
+replicaCount: 3
+
+image:
+  repository: 022499043310.dkr.ecr.ap-southeast-1.amazonaws.com/workshop-2/wineapp-frontend
+  pullPolicy: Always
+  tag: "v1.0.0"
+
+service:
+  type: ClusterIP 
+  port: 80
+  targetPort: 80
+  portName: http
+
+ingress:
+  enabled: true
+  className: "nginx"
+  hosts:
+    - host: wineapp.tranvix.online
+      paths:
+        - path: /
+          pathType: Prefix
+
+# resources:
+#   limits:
+#     cpu: 500m
+#     memory: 512Mi
+#   requests:
+#     cpu: 250m
+#     memory: 256Mi
+
+# autoscaling:
+#   enabled: true
+#   minReplicas: 2
+#   maxReplicas: 10
+#   targetCPUUtilizationPercentage: 80
+#   targetMemoryUtilizationPercentage: 80
+
+# Environment Variables
+env:
+  - name: REACT_APP_API_URL
+    value: "/api/v1"

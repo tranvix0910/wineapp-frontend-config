@@ -3,7 +3,7 @@ replicaCount: 3
 image:
   repository: 022499043310.dkr.ecr.ap-southeast-1.amazonaws.com/workshop-2/wineapp-frontend
   pullPolicy: Always
-  tag: "v1.0.0"
+  tag: "0de4c52"
 
 service:
   type: ClusterIP 
